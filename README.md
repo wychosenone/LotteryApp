@@ -1,3 +1,4 @@
+**Title:**
 *JACKPOT KING*
 
 **Subtitle:**
