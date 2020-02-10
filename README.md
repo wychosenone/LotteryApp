@@ -1,11 +1,14 @@
-# My Personal Project
+*JACKPOT KING*
 
-## A subtitle
+*Subtitle*
+Prediction of Lottery Numbers
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+**Who will use it?**
+This application will mainly focus on analytical prediction to lottery games involve numbers. The applicable lotteries are LottoMax, Lotto649, and BC49.
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+There are countless amount of people not only in Canada but also Worldwide, buying lotteries. Some of them are just having lottery fevers just for a while, whereas there are also some people having strong sense of wining and regarding lotteries as a long-term investment. This application is built especially for these people.
+
+**Why i choose this?**
+The main reason I choose this as my project is due to that I am also a lottery enthusiast,
+since it does not require a lot of time, money, and skills. You might think that everyone can be able to play this, and lottery draws are based on random pick, what pushes me to do this useless application? Well, I did some research and compared nearly a thousand group of numbers, came out with one solution that is there exists strategies that can help you wining. Even though the rate of wining some crazy million dollars are still low, at least it can prevent you from spending money for nothing, or at the very least it can make you some entertainments lol.
+
