@@ -1,6 +1,6 @@
 *JACKPOT KING*
 
-*Subtitle*
+**Subtitle:**
 Prediction of Lottery Numbers
 
 **Who will use it?**
