@@ -14,7 +14,7 @@ public class JackPotKingAPP {
 
     // EFFECTS: runs the JackPotKing application
     public JackPotKingAPP() throws FileNotFoundException {
-        lottoMax = new LottoMax("/Users/aaronwang/Desktop/cpsc 210/project_v9z2b/data/historyInfo.txt");
+        lottoMax = new LottoMax("historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
         runJackPot();

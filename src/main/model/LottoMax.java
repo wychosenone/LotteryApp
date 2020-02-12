@@ -1,6 +1,5 @@
 package model;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Random;
@@ -36,7 +35,7 @@ public class LottoMax {
     }
 
     public void readFile() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File(filename));
+        Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
         for (int i = 0; i < history.length; i++) {
             String line = sc.nextLine();
             String[] ss = line.split("-");
@@ -84,7 +83,7 @@ public class LottoMax {
         return x;
     }
 
-    public void helper1(int[] x) {
+    private void helper1(int[] x) {
 
         for (int i = 0; i < 50; i++) {
             if (pairs[i].num >= 20 && pairs[i].num < 28 && pairs[i].num % 2 == 0) {
@@ -103,7 +102,7 @@ public class LottoMax {
 
     }
 
-    public void helper2(int[] x) {
+    private void helper2(int[] x) {
         int a = rnd.nextInt(11);
         int b = rnd.nextInt(11);
         while (b == a) {
@@ -119,7 +118,7 @@ public class LottoMax {
     }
 
 
-    protected boolean isIn(int[] x, int n) {
+    private boolean isIn(int[] x, int n) {
         for (int i = 0; i < x.length; i++) {
             if (x[i] == n) {
                 return true;
@@ -171,8 +170,6 @@ public class LottoMax {
             }
         }
         return ret;
-
-
     }
 
 }

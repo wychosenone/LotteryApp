@@ -12,26 +12,30 @@ class LottoMaxTest {
 
     @BeforeEach
     void runBefore() throws FileNotFoundException {
-        lottoMax = new LottoMax("/Users/aaronwang/Desktop/cpsc 210/project_v9z2b/test_data/historyInfo.txt");
+        lottoMax = new LottoMax("historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
     }
+    @Test
+    void testGetHistory() {
+        assertEquals(100,lottoMax.getHistory().length);
+    }
 
     @Test
-    public void testReadFile() throws FileNotFoundException {
+    void testReadFile() throws FileNotFoundException {
             lottoMax.readFile();
 
     }
 
     @Test
-    public void testViewStat() {
+    void testViewStat() {
         int [] x = lottoMax.viewStat();
         assertEquals(11,x[0]);
         assertEquals(17,x[1]);
     }
 
     @Test
-    public void testPrediction(){
+    void testPrediction(){
         int[] x = lottoMax.doPrediction();
         assertEquals(3,x[0]);
         assertEquals(16,x[1]);
