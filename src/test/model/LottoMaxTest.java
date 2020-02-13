@@ -44,13 +44,19 @@ class LottoMaxTest {
         assertTrue(x[5] >= 40 && x[5] <= 50 );
         assertTrue(x[6] >= 40 && x[6] <= 50);
         assertTrue( x[5] != x[6]);
+
     }
 
 
     @Test
     void testSimulator() {
-        int[] ret = lottoMax.doSimulator(new int[]{3,12,21,29,34,37,42});
-        for (int i : ret){
+        int[] ret1 = lottoMax.doSimulator(new int[]{3,12,21,29,34,37,42});
+        for (int i : ret1){
+            System.out.println(i);
+        }
+
+        int[] ret2 = lottoMax.doSimulator(new int[]{4,19,23,24,35,39,43});
+        for (int i : ret2) {
             System.out.println(i);
         }
     }
