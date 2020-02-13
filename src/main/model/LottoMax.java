@@ -33,6 +33,8 @@ public class LottoMax {
         }
     }
 
+    // REQUIRES: saved files can be found in data
+    // EFFECTS: return and print the contents from a file
     public void readFile() {
         Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
         for (int i = 0; i < history.length; i++) {
@@ -45,6 +47,9 @@ public class LottoMax {
         sc.close();
     }
 
+
+    //REQUIRES: files can be loaded from data directory
+    //EFFECTS: return a list of two numbers that represent hot and cold
     public int[] viewStat() {
         int[] all = new int[51];
         for (int i = 0; i < history.length; i++) {
@@ -61,6 +66,9 @@ public class LottoMax {
 
     }
 
+
+    //REQUIRES: files can be loaded from data directory
+    //EFFECTS: return a list of 7 numbers represents prediction
     public int[] doPrediction() {
         int[] x = new int[7];
         for (int i = 49; i >= 0; i--) {
@@ -82,6 +90,9 @@ public class LottoMax {
         return x;
     }
 
+    //REQUIRES: files can be loaded from data
+    //MODIFIES: this
+    //EFFECTS: help doPrediction method continuing creating numbers
     private void helper1(int[] x) {
 
         for (int i = 0; i < 50; i++) {
@@ -101,6 +112,9 @@ public class LottoMax {
 
     }
 
+    //REQUIRES: files can be loaded from data
+    //MODIFIES: this
+    //EFFECTS: help doPrediction method continuing creating numbers
     private void helper2(int[] x) {
         int a = rnd.nextInt(11);
         int b = rnd.nextInt(11);
@@ -117,6 +131,8 @@ public class LottoMax {
     }
 
 
+    //REQUIRES: list is not empty, and bot list int are positive under 50
+    //EFFECTS: return true if item in list equals to the int, false otherwise
     private boolean isIn(int[] x, int n) {
         for (int i = 0; i < x.length; i++) {
             if (x[i] == n) {
@@ -126,6 +142,8 @@ public class LottoMax {
         return false;
     }
 
+    //REQUIRES: the int must be bounded under 50
+    //EFFECTS: return a random number list as a result  of lottery
     private int[] getResult() {
         int[] result = new int[7];
         int i = 0;
@@ -138,6 +156,10 @@ public class LottoMax {
         Arrays.sort(result);
         return result;
     }
+
+    //REQUIRES: the input value should be 7 different positive numbers under 50
+    //MODIFIES: this
+    //EFFECTS: return a list of two numbers representing num of total match and matched numbers
 
     public int[] doSimulator(int[] input) {
         int[] result = getResult();
