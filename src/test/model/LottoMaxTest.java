@@ -3,15 +3,14 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LottoMaxTest {
     private LottoMax lottoMax;
 
     @BeforeEach
-    void runBefore() throws FileNotFoundException {
+    void runBefore()  {
         lottoMax = new LottoMax("historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
@@ -22,7 +21,7 @@ class LottoMaxTest {
     }
 
     @Test
-    void testReadFile() throws FileNotFoundException {
+    void testReadFile() {
             lottoMax.readFile();
 
     }

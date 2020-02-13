@@ -1,6 +1,5 @@
 package model;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -34,7 +33,7 @@ public class LottoMax {
         }
     }
 
-    public void readFile() throws FileNotFoundException {
+    public void readFile(){
         Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
         for (int i = 0; i < history.length; i++) {
             String line = sc.nextLine();

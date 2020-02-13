@@ -1,10 +1,8 @@
 package ui;
 
 
-
 import model.LottoMax;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class JackPotKingAPP {
@@ -13,7 +11,7 @@ public class JackPotKingAPP {
     private LottoMax lottoMax;
 
     // EFFECTS: runs the JackPotKing application
-    public JackPotKingAPP() throws FileNotFoundException {
+    public JackPotKingAPP() {
         lottoMax = new LottoMax("historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
