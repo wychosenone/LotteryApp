@@ -127,18 +127,6 @@ public class LottoMax {
         return false;
     }
 
-    private int match(int[] a, int[] b) {
-        int n = 0;
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (a[i] == b[j]) {
-                    n++;
-                }
-            }
-        }
-        return n;
-    }
-
     private int[] getResult() {
         int[] result = new int[7];
         int i = 0;
