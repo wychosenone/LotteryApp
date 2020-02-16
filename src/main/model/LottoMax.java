@@ -1,6 +1,10 @@
 package model;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -36,15 +40,24 @@ public class LottoMax {
     // REQUIRES: saved files can be found in data
     // EFFECTS: return and print the contents from a file
     public void readFile() {
-        Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
-        for (int i = 0; i < history.length; i++) {
-            String line = sc.nextLine();
+        List<String> lines = null;
+        try {
+            lines = Files.readAllLines((new File(filename)).toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int i = 0;
+        for (String line : lines){
+//        Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
+//        for (int i = 0; i < history.length; i++) {
+//            String line = sc.nextLine();
             String[] ss = line.split("-");
             for (int j = 0; j < 7; j++) {
                 history[i][j] = Integer.parseInt(ss[j]);
             }
+            i++;
         }
-        sc.close();
+//        sc.close();
     }
 
 

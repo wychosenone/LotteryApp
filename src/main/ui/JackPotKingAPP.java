@@ -12,7 +12,7 @@ public class JackPotKingAPP {
 
     // EFFECTS: runs the JackPotKing application
     public JackPotKingAPP() {
-        lottoMax = new LottoMax("historyInfo.txt");
+        lottoMax = new LottoMax("./data/historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
         runJackPot();
@@ -87,6 +87,7 @@ public class JackPotKingAPP {
         System.out.println("Hot: " + ret[0]);
         System.out.println("Cold: " + ret[1]);
     }
+
 
     // REQUIRES: data can be loaded from .txt file
     // EFFECTS: return a list of numbers

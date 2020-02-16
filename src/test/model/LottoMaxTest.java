@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,7 +13,7 @@ class LottoMaxTest {
 
     @BeforeEach
     void runBefore()  {
-        lottoMax = new LottoMax("historyInfo.txt");
+        lottoMax = new LottoMax("./data/historyInfo.txt");
         lottoMax.readFile();
         lottoMax.viewStat();
     }
