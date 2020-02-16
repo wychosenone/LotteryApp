@@ -47,7 +47,7 @@ public class LottoMax {
             e.printStackTrace();
         }
         int i = 0;
-        for (String line : lines){
+        for (String line : lines) {
 //        Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
 //        for (int i = 0; i < history.length; i++) {
 //            String line = sc.nextLine();
