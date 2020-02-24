@@ -1,24 +1,28 @@
 package model;
 
+import persistence.Reader;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class LottoMax {
-    private String filename;
-    int[][] history = new int[100][7];
+
+    LottoRecord history = new LottoRecord();
     Pair[] pairs = new Pair[51];
     Random rnd = new Random();
 
-    public LottoMax(String dataFile) {
-        filename = dataFile;
+    public LottoMax(String dataFile) throws IOException {
+        for (TicketNo ticket : Reader.parseRecord(Reader.readFile(dataFile))) {
+            history.add(ticket);
+        }
+        viewStat();
     }
 
-    public int[][] getHistory() {
+    public LottoRecord getHistory() {
         return history;
     }
 
@@ -37,39 +41,23 @@ public class LottoMax {
         }
     }
 
-    // REQUIRES: saved files can be found in data
-    // EFFECTS: return and print the contents from a file
-    public void readFile() {
-        List<String> lines = null;
-        try {
-            lines = Files.readAllLines((new File(filename)).toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        int i = 0;
-        for (String line : lines) {
-//        Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream(filename));
-//        for (int i = 0; i < history.length; i++) {
-//            String line = sc.nextLine();
-            String[] ss = line.split("-");
-            for (int j = 0; j < 7; j++) {
-                history[i][j] = Integer.parseInt(ss[j]);
-            }
-            i++;
-        }
-//        sc.close();
-    }
-
 
     //REQUIRES: files can be loaded from data directory
     //EFFECTS: return a list of two numbers that represent hot and cold
     public int[] viewStat() {
         int[] all = new int[51];
-        for (int i = 0; i < history.length; i++) {
-            for (int j = 0; j < 7; j++) {
-                all[history[i][j]]++;
+        for (TicketNo ticketNo : history.getTicketNoList()) {
+            for (int value : ticketNo.getNumbers()) {
+                all[value]++;
             }
+
         }
+        // before refactoring
+//        for (int i = 0; i < history.length; i++) {
+//            for (int j = 0; j < 7; j++) {
+//                all[history[i][j]]++;
+//            }
+//        }
 
         for (int i = 0; i < all.length; i++) {
             pairs[i] = new Pair(i, all[i]);
@@ -157,7 +145,7 @@ public class LottoMax {
 
     //REQUIRES: the int must be bounded under 50
     //EFFECTS: return a random number list as a result  of lottery
-    private int[] getResult() {
+    private int[] getRandomTicket() {
         int[] result = new int[7];
         int i = 0;
         while (i < 7) {
@@ -175,7 +163,7 @@ public class LottoMax {
     //EFFECTS: return a list of two numbers representing num of total match and matched numbers
 
     public int[] doSimulator(int[] input) {
-        int[] result = getResult();
+        int[] result = getRandomTicket();
         int count = 0;
         for (int num : input) {
             if (isIn(result, num)) {

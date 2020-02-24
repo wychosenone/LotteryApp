@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,21 +13,16 @@ class LottoMaxTest {
     private LottoMax lottoMax;
 
     @BeforeEach
-    void runBefore()  {
+    void runBefore() throws IOException {
         lottoMax = new LottoMax("./data/historyInfo.txt");
-        lottoMax.readFile();
-        lottoMax.viewStat();
+
     }
     @Test
     void testGetHistory() {
-        assertEquals(100,lottoMax.getHistory().length);
+        assertEquals(100,lottoMax.getHistory().getTicketNoList().size());
     }
 
-    @Test
-    void testReadFile() {
-            lottoMax.readFile();
 
-    }
 
     @Test
     void testViewStat() {

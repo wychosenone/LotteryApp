@@ -2,7 +2,9 @@ package ui;
 
 
 import model.LottoMax;
+import model.TicketNo;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class JackPotKingAPP {
@@ -11,10 +13,8 @@ public class JackPotKingAPP {
     private LottoMax lottoMax;
 
     // EFFECTS: runs the JackPotKing application
-    public JackPotKingAPP() {
+    public JackPotKingAPP() throws IOException {
         lottoMax = new LottoMax("./data/historyInfo.txt");
-        lottoMax.readFile();
-        lottoMax.viewStat();
         runJackPot();
     }
 
@@ -72,8 +72,8 @@ public class JackPotKingAPP {
     // REQUIRES: .txt file can be found
     // EFFECTS: get access to the .txt file
     private void historyInfo() {
-        for (int[] row : lottoMax.getHistory()) {
-            for (int cell : row) {
+        for (TicketNo row : lottoMax.getHistory().getTicketNoList()) {
+            for (int cell : row.getNumbers()) {
                 System.out.print(cell + " ");
             }
             System.out.println();
