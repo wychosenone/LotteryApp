@@ -120,6 +120,7 @@ public class JackPotKingAPP {
     // EFFECTS: return a list of numbers
     private void doPrediction() {
         int[] r = lottoMax.doPrediction();
+        System.out.println("The numbers below are the suggestions for you:");
         for (int i : r) {
             System.out.print(i + " ");
         }

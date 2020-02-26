@@ -25,4 +25,6 @@ As a user, i want to be able to view the lottery history.
 As a user, i want to be able to see the statistics of lotteries.
 As a user, i want to be able to get numbers from prediction.
 As a user, i want to be able to add my own numbers or random numbers to simulator.
+As a user, i want to be able to save my to do list to file.
+As a user, i want to be able to open my file any time when program runs.
 
