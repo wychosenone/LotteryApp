@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketNo {
+    private int[] numbers = new int[7];
+
     public TicketNo(int[] numbers) {
         this.numbers = numbers;
     }
@@ -12,8 +14,17 @@ public class TicketNo {
         return numbers;
     }
 
-    private int[] numbers = new int[7];
-    private List<String> matchNumbers = new ArrayList<>();
+    @Override
+    public String toString() {
+        String s = "";
+        for (int n : numbers) {
+            s = s + n + "-";
+        }
+        return s.substring(0, s.length() - 1);
+    }
+
+
+
 
 
 

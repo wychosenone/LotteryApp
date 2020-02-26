@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,12 +16,12 @@ class LottoMaxTest {
 
     @BeforeEach
     void runBefore() throws IOException {
-        lottoMax = new LottoMax("./data/historyInfo.txt");
+        lottoMax = new LottoMax("./data/historyInfo_test.txt");
 
     }
     @Test
     void testGetHistory() {
-        assertEquals(100,lottoMax.getHistory().getTicketNoList().size());
+        assertTrue(lottoMax.getHistory().getTicketNoList().size() > 0);
     }
 
 
@@ -57,5 +59,12 @@ class LottoMaxTest {
         for (int i : ret2) {
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void testAddNewRecord() throws FileNotFoundException, UnsupportedEncodingException {
+        int originalNum = lottoMax.getHistory().getTicketNoList().size();
+        lottoMax.addNewRecord(new int[]{8,12,19,22,25,32,42});
+        assertEquals(originalNum + 1,lottoMax.getHistory().getTicketNoList().size());
     }
 }

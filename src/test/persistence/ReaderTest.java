@@ -1,4 +1,6 @@
-package model;
+package persistence;
+
+import model.TicketNo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ public class ReaderTest {
 
     @Test
     public void testparseRecord() throws IOException {
-        List<String> records = Reader.readFile("./data/historyInfo.txt");
+        List<String> records = Reader.readFile("./data/historyInfo.txt.org");
         List<TicketNo> ticketNoList = Reader.parseRecord(records);
         assertEquals(100, ticketNoList.size());
     }

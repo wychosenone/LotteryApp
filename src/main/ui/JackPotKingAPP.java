@@ -3,18 +3,22 @@ package ui;
 
 import model.LottoMax;
 import model.TicketNo;
+import persistence.Writer;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class JackPotKingAPP {
 
     private Scanner input;
     private LottoMax lottoMax;
+    private static final String HISTORY_FILE = "./data/historyInfo.txt";
 
     // EFFECTS: runs the JackPotKing application
     public JackPotKingAPP() throws IOException {
-        lottoMax = new LottoMax("./data/historyInfo.txt");
+        lottoMax = new LottoMax(HISTORY_FILE);
         runJackPot();
     }
 
@@ -53,6 +57,8 @@ public class JackPotKingAPP {
             doPrediction();
         } else if (mission.equals("t")) {
             doSimulator();
+        } else if (mission.equals(("a"))) {
+            addNewRecord();
         } else {
             System.out.println("Selected invalid command");
         }
@@ -66,6 +72,7 @@ public class JackPotKingAPP {
         System.out.println("\tv -> viewStat");
         System.out.println("\tp -> doPrediction");
         System.out.println("\tt -> doSimulator");
+        System.out.println("\ta -> addNewRecord");
         System.out.println("\tq -> quit");
     }
 
@@ -86,6 +93,26 @@ public class JackPotKingAPP {
         int[] ret = lottoMax.viewStat();
         System.out.println("Hot: " + ret[0]);
         System.out.println("Cold: " + ret[1]);
+    }
+
+    private void addNewRecord() {
+
+        System.out.println("Please input 7 different numbers,space by one blank:");
+        input.nextLine();
+        String s = input.nextLine();
+        int[] data = new int[7];
+        int p = 0;
+        for (String d : s.split(" ")) {
+            data[p++] = Integer.parseInt(d);
+        }
+        try {
+            lottoMax.addNewRecord(data);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

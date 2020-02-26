@@ -1,21 +1,24 @@
 package model;
 
 import persistence.Reader;
+import persistence.Writer;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class LottoMax {
 
-    LottoRecord history = new LottoRecord();
-    Pair[] pairs = new Pair[51];
-    Random rnd = new Random();
+    private LottoRecord history = new LottoRecord();
+    private Pair[] pairs = new Pair[51];
+    private Random rnd = new Random();
+    private String dataFile;
+
 
     public LottoMax(String dataFile) throws IOException {
+        this.dataFile = dataFile;
         for (TicketNo ticket : Reader.parseRecord(Reader.readFile(dataFile))) {
             history.add(ticket);
         }
@@ -63,7 +66,7 @@ public class LottoMax {
             pairs[i] = new Pair(i, all[i]);
         }
         Arrays.sort(pairs);
-        return new int[]{pairs[0].num,pairs[49].num};
+        return new int[]{pairs[0].num, pairs[49].num};
 
     }
 
@@ -182,4 +185,8 @@ public class LottoMax {
         return ret;
     }
 
+    public void addNewRecord(int[] number) throws FileNotFoundException, UnsupportedEncodingException {
+        history.add(new TicketNo(number));
+        Writer.write(dataFile, history);
+    }
 }
