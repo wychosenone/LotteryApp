@@ -27,8 +27,17 @@ As a user, i want to be able to get numbers from prediction.
 As a user, i want to be able to add my own numbers or random numbers to simulator.
 As a user, i want to be able to save my to do list to file.
 As a user, i want to be able to open my file any time when program runs.
-If you get into the ui package, you will see there is a class called JackPOtKingGUI, run it and it will display a menu.
-On the menu, there are different functions. There are two functions (prediction and viewStat) that require input which
-you can just type 7 different number below 50 spaced by 1 blank. The loadHistory does not come with a new window because 
-the data has already been loaded there.
+
+**Instructions for Grader**
+First, If you get into the ui package, you will see there is a class called JackPOtKingGUI, run it and it will display
+ a menu window with different functionality. For the "ADD X TO Y" task you can achieve it by clicking the input blank 
+ and entering 7 different numbers below 50. Then you can click the tasks below to see the effect as if you input 7 
+ numbers the click addnewRecord, it will add your number to the history class. Also before you do prediction and 
+ simulation you also need to input first then click the button. For the loadHistory and viewStat task, they do not 
+ require a input but also no new windows will come out due to that it has already been there at the left.
+ You can certainly here a bell-like sound when you click and you will notice there is a logo at the top right. 
+ The website where i get it is: https://www.playolg.ca/content/dam/olg/responsive/new-lottomax/images/lotto-max.jpg
+ 
+Due to that some of my tasks are based on random generated numbers so its hard to get perfect on autobot score!!! 
+ There is a TA who knows my situation and hopefully he will grade my phase 3! :)
 
