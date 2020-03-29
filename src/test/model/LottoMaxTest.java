@@ -1,15 +1,14 @@
 package model;
 
+import exception.InvalidTicketNoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LottoMaxTest {
     private LottoMax lottoMax;
@@ -66,5 +65,37 @@ class LottoMaxTest {
         int originalNum = lottoMax.getHistory().getTicketNoList().size();
         lottoMax.addNewRecord(new int[]{8,12,19,22,25,32,42});
         assertEquals(originalNum + 1,lottoMax.getHistory().getTicketNoList().size());
+    }
+
+    @Test
+    public void testParseNo() {
+        try {
+            LottoMax.parseNo("er 123");
+            fail("should throw exception");
+        } catch (InvalidTicketNoException e) {
+            //
+        }
+    }
+
+    @Test
+    void testOutOfBoundary() {
+        try {
+            LottoMax.parseNo("1 2 3 4 5 6 7 8");
+            fail("should throw exception");
+        } catch (InvalidTicketNoException e) {
+            //
+        }
+    }
+
+    @Test
+    public void testParseNoNoError() throws InvalidTicketNoException {
+        try {
+            int [] result = LottoMax.parseNo("1 2 3 4 5 6 7");
+            assertEquals(7,result.length);
+            assertEquals(1,result[0]);
+            assertEquals(7,result[6]);
+        } catch (NumberFormatException e) {
+            fail("should not throw exception");
+        }
     }
 }

@@ -1,5 +1,6 @@
 package model;
 
+import exception.InvalidTicketNoException;
 import persistence.Reader;
 import persistence.Writer;
 
@@ -188,5 +189,20 @@ public class LottoMax {
     public void addNewRecord(int[] number) throws FileNotFoundException, UnsupportedEncodingException {
         history.add(new TicketNo(number));
         Writer.write(dataFile, history);
+    }
+
+    public static int[] parseNo(String s) throws InvalidTicketNoException {
+        int[] data = new int[7];
+        int p = 0;
+        for (String d : s.split(" ")) {
+            try {
+                data[p++] = Integer.parseInt(d);
+            } catch (NumberFormatException e) {
+                throw new InvalidTicketNoException("Can't parse given ticket number", e);
+            } catch (IndexOutOfBoundsException e) {
+                throw new InvalidTicketNoException("More ticket number than expected", e);
+            }
+        }
+        return data;
     }
 }

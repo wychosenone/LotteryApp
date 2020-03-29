@@ -1,5 +1,6 @@
 package ui;
 
+import exception.InvalidTicketNoException;
 import model.LottoMax;
 import model.TicketNo;
 
@@ -96,11 +97,18 @@ public class JackPotKingGUI extends JFrame {
         });
     }
 
+    private void popDialog(String message, String title) {
+        JDialog d = new JDialog(frame, title);
+        d.add(new JLabel(message), BorderLayout.CENTER);
+        d.setSize(300, 150);
+        d.setVisible(true);
+    }
+
     private void setupjbSimulation() {
         jbSimulation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    int[] data = parseNo(jtextTicketNo.getText());
+                    int[] data = LottoMax.parseNo(jtextTicketNo.getText());
                     int[] ret = lottoMax.doSimulator(data);
                     String message = "you match " + ret[0] + " numbers,";
                     String t = "";
@@ -110,11 +118,10 @@ public class JackPotKingGUI extends JFrame {
                         }
                         message += ("They are: " + t);
                     }
-                    JDialog d = new JDialog(frame, "Simulation");
-                    d.add(new JLabel(message), BorderLayout.CENTER);
-                    d.setSize(300, 150);
-                    d.setVisible(true);
+                    popDialog(message, "Simulation");
                     playAudio();
+                } catch (InvalidTicketNoException et) {
+                    popDialog(et.getMessage(), "Simulation");
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -247,12 +254,5 @@ public class JackPotKingGUI extends JFrame {
 
     }
 
-    private int[] parseNo(String s) {
-        int[] data = new int[7];
-        int p = 0;
-        for (String d : s.split(" ")) {
-            data[p++] = Integer.parseInt(d);
-        }
-        return data;
-    }
+
 }
