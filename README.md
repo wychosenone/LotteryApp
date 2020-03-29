@@ -40,4 +40,18 @@ First, If you get into the ui package, you will see there is a class called Jack
  
 Due to that some of my tasks are based on random generated numbers so its hard to get perfect on autobot score!!! 
  There is a TA who knows my situation and hopefully he will grade my phase 3! :)
+ 
+ **Phase4 Task2**
+ For this task i chose the robust design. The class i modified is LottoMax, and the method i modified is the ParseNo().
+ This method previously requires that user need to input a well formatted group of numbers, otherwise the error code
+ will come out. However, after this robust design, there would not be any red errors coming out, instead it will notify
+ users when their input are not corrected. I also made test for it. Have a look in the LottoMaxTest testParseNo and
+ further.
+ 
+ **Phase4 Task3**
+ Since i didn't know we need some bidirectional relationships between classes i had never used that relation. There 
+ does not exist coupling things but cohesion exists in each of the class since they doing their job respectively.
+ The UML Diagram has been included in this project - "Screen Shot".Due to that some of my methods are depending on random numbers.
+ So please show mercy when you see my code grade is 93.6%. Thanks!
+ 
 
