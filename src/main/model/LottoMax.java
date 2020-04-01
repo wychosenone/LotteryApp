@@ -11,9 +11,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class LottoMax {
-
+    public static final int TotalNum = 7;
+    public static final int Recent50 = 51;
     private LottoRecord history = new LottoRecord();
-    private Pair[] pairs = new Pair[51];
+    private Pair[] pairs = new Pair[Recent50];
     private Random rnd = new Random();
     private String dataFile;
 
@@ -49,7 +50,7 @@ public class LottoMax {
     //REQUIRES: files can be loaded from data directory
     //EFFECTS: return a list of two numbers that represent hot and cold
     public int[] viewStat() {
-        int[] all = new int[51];
+        int[] all = new int[Recent50];
         for (TicketNo ticketNo : history.getTicketNoList()) {
             for (int value : ticketNo.getNumbers()) {
                 all[value]++;
@@ -75,7 +76,7 @@ public class LottoMax {
     //REQUIRES: files can be loaded from data directory
     //EFFECTS: return a list of 7 numbers represents prediction
     public int[] doPrediction() {
-        int[] x = new int[7];
+        int[] x = new int[TotalNum];
         for (int i = 49; i >= 0; i--) {
             if (pairs[i].num < 10 && pairs[i].num % 2 == 1) {
                 x[0] = pairs[i].num;
@@ -150,9 +151,9 @@ public class LottoMax {
     //REQUIRES: the int must be bounded under 50
     //EFFECTS: return a random number list as a result  of lottery
     private int[] getRandomTicket() {
-        int[] result = new int[7];
+        int[] result = new int[TotalNum];
         int i = 0;
-        while (i < 7) {
+        while (i < TotalNum) {
             int n = 1 + rnd.nextInt(50);
             if (!isIn(result, n)) {
                 result[i++] = n;
@@ -192,7 +193,7 @@ public class LottoMax {
     }
 
     public static int[] parseNo(String s) throws InvalidTicketNoException {
-        int[] data = new int[7];
+        int[] data = new int[TotalNum];
         int p = 0;
         for (String d : s.split(" ")) {
             try {

@@ -79,17 +79,14 @@ public class JackPotKingGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String s = jtextTicketNo.getText();
-                    int[] data = new int[7];
-                    int p = 0;
-                    for (String d : s.split(" ")) {
-                        data[p++] = Integer.parseInt(d);
-                    }
-
+                    int[] data = LottoMax.parseNo(s);
                     lottoMax.addNewRecord(data);
                     TicketNo t = new TicketNo(data);
                     listModel.addElement(t.toString());
                     playAudio();
 
+                } catch (InvalidTicketNoException e1) {
+                    popDialog(e1.getMessage(), "new record");
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }

@@ -1,8 +1,10 @@
 package ui;
 
 
+import exception.InvalidTicketNoException;
 import model.LottoMax;
 import model.TicketNo;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 import persistence.Writer;
 
 import java.io.FileNotFoundException;
