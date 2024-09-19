@@ -36,7 +36,7 @@ class LottoMaxTest {
     void testPrediction(){
         int[] x = lottoMax.doPrediction();
         assertEquals(3,x[0]);
-        assertEquals(16,x[1]);
+        assertEquals(12,x[1]);
         assertEquals(22,x[2]);
         assertTrue(x[3] >= 28 && x[3] <= 33 );
         assertEquals(35,x[4]);

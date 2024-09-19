@@ -9,7 +9,7 @@ import persistence.Writer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;1
 import java.util.Scanner;
 
 public class JackPotKingAPP {
